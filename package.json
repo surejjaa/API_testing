@@ -1,0 +1,21 @@
+{
+  "name": "API_testing",
+  "type": "module",
+  "devDependencies": {
+    "@testing-library/webdriverio": "^3.2.1",
+    "@wdio/allure-reporter": "^8.36.1",
+    "@wdio/cli": "^8.36.1",
+    "@wdio/jasmine-framework": "^8.36.1",
+    "@wdio/local-runner": "^8.36.1",
+    "wdio-vscode-service": "^6.0.3",
+    "wdio-wait-for": "^3.0.11"
+  },
+  "scripts": {
+    "wdio": "wdio run ./wdio.conf.js"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.29.0",
+    "axios": "^1.6.8",
+    "selenium-webdriver": "^4.20.0"
+  }
+}
