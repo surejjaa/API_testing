@@ -1,41 +1,63 @@
 import { $ } from '@wdio/globals'
+import axios from "axios";
 import Page from './page.js';
 
-/**
- * sub page containing specific selectors and methods for a specific page
- */
-class LoginPage extends Page {
-    /**
-     * define selectors using getter methods
-     */
-    get inputUsername () {
-        return $('#username');
+class RequestsPage extends Page {
+    async getRequest(url){
+        axios.get(`${url}`)
+        .then(function (response) {
+            console.log(response);
+            return response;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .finally(function () {
+        });
     }
 
-    get inputPassword () {
-        return $('#password');
+    async postRequest(url, data){
+        axios.post(`${url}`, data)
+        .then(function (response) {
+            console.log(response);
+            return response;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .finally(function () {
+        });
     }
 
-    get btnSubmit () {
-        return $('button[type="submit"]');
+    async putRequest(id, data){
+        axios.put(`${this.url}/${id}`, data)
+        .then(function (response) {
+            console.log(response);
+            return response;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .finally(function () {
+        });
     }
 
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
-    async login (username, password) {
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+    async deleteRequest(id){
+        axios.delete(`${this.url}/${id}`)
+        .then(function (response) {
+            console.log(response);
+            return response;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .finally(function () {
+        });
     }
 
-    /**
-     * overwrite specific options to adapt it to page object
-     */
     open () {
-        return super.open('login');
+        return super.open('');
     }
 }
 
-export default new LoginPage();
+export default new RequestsPage();

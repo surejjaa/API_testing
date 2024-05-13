@@ -1,4 +1,5 @@
-import allureReporter from 'allure-commandline'
+import allure from 'allure-commandline'
+
 export const config = {
     //
     // ====================
