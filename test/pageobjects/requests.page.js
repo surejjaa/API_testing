@@ -1,62 +1,49 @@
-import { $ } from '@wdio/globals'
 import axios from "axios";
 import Page from './page.js';
 
 class RequestsPage extends Page {
     async getRequest(url){
-        axios.get(`${url}`)
-        .then(function (response) {
+        try {
+            const response = await axios.get(`${url}`);
             console.log(response);
             return response;
-        })
-        .catch(function (error) {
+        } catch (error) {
             console.log(error);
-        })
-        .finally(function () {
-        });
+            throw error;
+        }
     }
 
     async postRequest(url, data){
-        axios.post(`${url}`, data)
-        .then(function (response) {
+        try {
+            const response = await axios.post(`${url}`, data);
             console.log(response);
             return response;
-        })
-        .catch(function (error) {
+        } catch (error) {
             console.log(error);
-        })
-        .finally(function () {
-        });
+            throw error;
+        }
     }
 
     async putRequest(id, data){
-        axios.put(`${this.url}/${id}`, data)
-        .then(function (response) {
+        try {
+            const response = await axios.put(`${this.url}/${id}`, data);
             console.log(response);
             return response;
-        })
-        .catch(function (error) {
+        } catch (error) {
             console.log(error);
-        })
-        .finally(function () {
-        });
+            throw error;
+        }
     }
-
+    
     async deleteRequest(id){
-        axios.delete(`${this.url}/${id}`)
-        .then(function (response) {
+        try {
+            const response = await axios.delete(`${this.url}/${id}`);
             console.log(response);
             return response;
-        })
-        .catch(function (error) {
+        } catch (error) {
             console.log(error);
-        })
-        .finally(function () {
-        });
-    }
-
-    open () {
-        return super.open('');
+            throw error;
+        }
     }
 }
 

@@ -7,13 +7,6 @@ export default class Page {
         this.url = 'https://fakerestapi.azurewebsites.net/api/v1/Authors';
         this.data = this.generateData();
     }
-
-    /**
-    @param path 
-    */
-    open (path) {
-        return browser.url(`https://fakerestapi.azurewebsites.net/api/v1/Authors${path}`)
-    }
     
     async generateData(){
         const id = await randomPage.getRandomId();
@@ -25,5 +18,12 @@ export default class Page {
 
     async buildUrl(id){
         return(`${this.url}/${id}`);
+    }
+
+    /**
+    @param path 
+    */
+    open (path) {
+        return browser.url(`https://fakerestapi.azurewebsites.net/api/v1/Authors${path}`)
     }
 }
