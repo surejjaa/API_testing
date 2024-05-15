@@ -13,16 +13,18 @@ describe('API smoke test for demo application', () => {
     });
 
     it('makes a POST request for an author', async () => {
-        const response = await requestsPage.postRequest(requestsPage.url, requestsPage.data);
+        const data = await requestsPage.data;
+        const response = await requestsPage.postRequest(requestsPage.url, data);
         await expect(response.status).toEqual(requestsPage.status);
-        await expect(response.data).toEqual(requestsPage.data);
+        await expect(response.data).toEqual(data);
     });
 
     it('makes a PUT request for an author', async () => {
         const randomId = await randomPage.getRandomId();
-        const response = await requestsPage.putRequest(randomId, requestsPage.data);
+        const data = await requestsPage.data;
+        const response = await requestsPage.putRequest(randomId, data);
         await expect(response.status).toEqual(requestsPage.status);
-        await expect(response.data).toEqual(requestsPage.data);
+        await expect(response.data).toEqual(data);
     });
 
     it('makes a DELETE request for an author', async () => {
