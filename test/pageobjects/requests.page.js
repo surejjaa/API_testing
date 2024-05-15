@@ -1,41 +1,50 @@
-import { $ } from '@wdio/globals'
+import axios from "axios";
 import Page from './page.js';
 
-/**
- * sub page containing specific selectors and methods for a specific page
- */
-class LoginPage extends Page {
-    /**
-     * define selectors using getter methods
-     */
-    get inputUsername () {
-        return $('#username');
+class RequestsPage extends Page {
+    async getRequest(url){
+        try {
+            const response = await axios.get(`${url}`);
+            console.log(response);
+            return response;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
 
-    get inputPassword () {
-        return $('#password');
+    async postRequest(url, data){
+        try {
+            const response = await axios.post(`${url}`, data);
+            console.log(response);
+            return response;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
 
-    get btnSubmit () {
-        return $('button[type="submit"]');
+    async putRequest(id, data){
+        try {
+            const response = await axios.put(`${this.url}/${id}`, data);
+            console.log(response);
+            return response;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
-
-    /**
-     * a method to encapsule automation code to interact with the page
-     * e.g. to login using username and password
-     */
-    async login (username, password) {
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
-    }
-
-    /**
-     * overwrite specific options to adapt it to page object
-     */
-    open () {
-        return super.open('login');
+    
+    async deleteRequest(id){
+        try {
+            const response = await axios.delete(`${this.url}/${id}`);
+            console.log(response);
+            return response;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
 }
 
-export default new LoginPage();
+export default new RequestsPage();

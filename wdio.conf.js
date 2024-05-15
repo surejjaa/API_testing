@@ -1,4 +1,5 @@
-import allureReporter from 'allure-commandline'
+import allure from 'allure-commandline'
+
 export const config = {
     //
     // ====================
@@ -241,8 +242,6 @@ export const config = {
             await browser.takeScreenshot();
         }
     },
-
-
     /**
      * Hook that gets executed after the suite has ended
      * @param {object} suite suite details
@@ -290,7 +289,7 @@ export const config = {
             return new Promise((resolve, reject) => {
                 const generationTimeout = setTimeout(
                     () => reject(reportError),
-                    5000)
+                    30000)
     
                 generation.on('exit', function(exitCode) {
                     clearTimeout(generationTimeout)
