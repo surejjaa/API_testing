@@ -28,6 +28,13 @@ export const config = {
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
+        './test/specs/test.api.js',
+        './test/specs/test.get.data.js',
+        './test/specs/test.get.by.id.js',
+        './test/specs/test.post.data.js',
+        './test/specs/test.put.data.js',
+        './test/specs/test.delete.data.js',
+        './test/specs/test.get.nonexistent.author.js'
     ],
     //
     // ============

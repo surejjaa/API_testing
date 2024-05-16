@@ -8,6 +8,10 @@ class RandomMethods{
     async getRandomInt(num) {
         return Math.floor(Math.random() * num);
     }
+
+    async getRandomIntFromRange(min, max){
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
     
     async generateFirstname(){
         var names = ["John", "Jane", "Alice", "Bob", "Michael", "Emily", "David", "Sarah", "James", "Emma"];
