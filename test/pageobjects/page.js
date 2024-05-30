@@ -34,10 +34,10 @@ export default class Page {
 
     async validatingObjectAttributes(data){
         data.forEach(author => {
-            expect(author).toHaveProperty('id');
-            expect(author).toHaveProperty('idBook');
-            expect(author).toHaveProperty('firstName');
-            expect(author).toHaveProperty('lastName');
+            expect(author.hasOwnProperty('id')).toBe(true);
+            expect(author.hasOwnProperty('idBook')).toBe(true);
+            expect(author.hasOwnProperty('firstName')).toBe(true);            
+            expect(author.hasOwnProperty('lastName')).toBe(true);
         });
     }
 }

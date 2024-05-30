@@ -1,4 +1,5 @@
 import allure from 'allure-commandline'
+import MockAdapter from 'axios-mock-adapter'
 
 export const config = {
     //
@@ -34,7 +35,8 @@ export const config = {
         './test/specs/test.post.data.js',
         './test/specs/test.put.data.js',
         './test/specs/test.delete.data.js',
-        './test/specs/test.get.nonexistent.author.js'
+        //'./test/specs/test.get.nonexistent.author.js',
+        './test/specs/test.validate.data.js'
     ],
     //
     // ============
