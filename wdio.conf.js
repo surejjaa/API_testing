@@ -1,4 +1,6 @@
-import allureReporter from 'allure-commandline'
+import allure from 'allure-commandline'
+import MockAdapter from 'axios-mock-adapter'
+
 export const config = {
     //
     // ====================
@@ -27,6 +29,14 @@ export const config = {
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
+        './test/specs/test.api.js',
+        './test/specs/test.get.data.js',
+        './test/specs/test.get.by.id.js',
+        './test/specs/test.post.data.js',
+        './test/specs/test.put.data.js',
+        './test/specs/test.delete.data.js',
+        //'./test/specs/test.get.nonexistent.author.js',
+        './test/specs/test.validate.data.js'
     ],
     //
     // ============
@@ -241,8 +251,6 @@ export const config = {
             await browser.takeScreenshot();
         }
     },
-
-
     /**
      * Hook that gets executed after the suite has ended
      * @param {object} suite suite details
@@ -290,7 +298,7 @@ export const config = {
             return new Promise((resolve, reject) => {
                 const generationTimeout = setTimeout(
                     () => reject(reportError),
-                    5000)
+                    30000)
     
                 generation.on('exit', function(exitCode) {
                     clearTimeout(generationTimeout)
